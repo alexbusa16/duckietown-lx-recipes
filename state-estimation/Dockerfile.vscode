@@ -76,8 +76,12 @@ LABEL org.duckietown.label.module.type="exercise-vscode" \
 COPY --from=recipe assets/vscode/setup.sh /tmp/vscode_setup.sh
 RUN /tmp/vscode_setup.sh
 
+#atp1 - python lib incopatibility of package rumel.yamel
+RUN pip3 install -y ruamel.yaml
+
 # install python libraries
 RUN pip3 install -U \
     duckietown-world-daffy \
     tqdm \
-    ipywidgets
+    ipywidgets \
+    ruamel.yaml==0.16.0
